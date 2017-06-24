@@ -1,5 +1,5 @@
 (ns com.tbaldridge.odin.contexts.spec
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [com.tbaldridge.odin.contexts.data :as d]
             [com.tbaldridge.odin :as o]))
 
@@ -175,7 +175,7 @@
           (s/conform ::spec-form ?spec) ?parsed)
         (map-subspecs ?parsed ?path ?sub-spec))))
 
-#_(o/defrule sub-specs [?spec ?path-in ?path-out ?sub-specs]
+#_(o/defrule sub-specs [?spec ?path-in ?path-out ?sub-specs])
   (o/or
     (o/= ?path-in ?path-out)
     (sub-spec ?spec ?path-in ?sub-specs)
@@ -184,9 +184,9 @@
       (sub-spec ?spec ?sub ?msp)
       (o/project
         (conj ?path-in ?sub) ?new-path)
-      (o/lazy-rule (sub-specs ?msp ?new-path ?path-out ?sub-specs)))))
+      (o/lazy-rule (sub-specs ?msp ?new-path ?path-out ?sub-specs))))
 
-#_(defn query-spec [data spec path]
+#_(defn query-spec [data spec path])
   (o/for-query
     (o/and
-      (spec-query-in ?spec [::clauses _ ::spec-args _] ?arg))))
+      (spec-query-in ?spec [::clauses _ ::spec-args _] ?arg)))

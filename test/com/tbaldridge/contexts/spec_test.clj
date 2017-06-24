@@ -2,7 +2,7 @@
   (:require [clojure.test :refer [deftest is]]
             [com.tbaldridge.odin :as o]
             [com.tbaldridge.odin.contexts.spec :as sc]
-            [clojure.spec :as s]))
+            [clojure.spec.alpha :as s]))
 
 
 (s/def ::some-int integer?)
@@ -71,8 +71,8 @@
                   (sc/spec-query [] ::map ?spec)
                   (sc/non-component-spec ?spec ?s))
                 ?s))
-         #{::some-float ::some-int}))
+         #{::some-float ::some-int})))
 
 
 
-  )
+
